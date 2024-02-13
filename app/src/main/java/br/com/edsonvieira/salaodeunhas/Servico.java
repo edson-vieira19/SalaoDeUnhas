@@ -6,8 +6,8 @@ public class Servico {
     private double preco;
     private int duracao;
 
-    public Servico(String nome, double valor, int duracao) {
-        this.descricao = nome;
+    public Servico(String descricao, double valor, int duracao) {
+        this.descricao = descricao;
         this.preco = valor;
         this.duracao = duracao;
     }

@@ -61,6 +61,9 @@
     <string name="email_edson">Email: edson.2012@alunos.utfpr.edu.br</string>
     <string name="cadastro_de_servicos">Cadastrar um Novo Serviço:</string>
     <string name="preco">Preço:</string>
+    <string name="a_descricao_nao_pode_ser_vazia">A descricao nao pode ser vazia.</string>
+    <string name="o_pre_o_n_o_pode_ser_vazio">O preço não pode ser vazio</string>
+    <string name="a_duracao_nao_pode_ser_vazio">a duracao nao pode ser vazio</string>
 
 
 </resources>
