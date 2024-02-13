@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Salão de Unhas</string>
+    <string name="cadastro_do_cliente">Cadastro do Cliente:</string>
+    <string name="nome">Nome:</string>
+    <string name="endereco">Endereço:</string>
+    <string name="celular">Celular/WhatsApp</string>
+    <string name="instagram">Instagram:</string>
+    <string name="anamnese">Anamnese:</string>
+    <string name="possui_problema">Possui um ou mais dos problemas abaixo?</string>
+    <string name="micose">Micose/Fungo</string>
+    <string name="unha_encravada">Unha Encravada</string>
+    <string name="outro">Outro</string>
+    <string name="diabetes">Possui Diabetes?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="fumante">È Fumante?</string>
+    <string name="nenhum">Nenhum</string>
+    <string name="atividade">Realiza alguma atividade que cause desgaste nas unhas?</string>
+    <string name="qual">Qual?</string>
+    <string name="possuiAlergia">Possui Alergia a algum Produto?</string>
+    <string name="esmalte">Esmalte</string>
+    <string name="acetona">Acetona</string>
+    <string name="base">Base</string>
+    <string name="leo_secante">Óleo Secante</string>
+    <string name="gel">Gel</string>
+    <string name="limpar">Limpar</string>
+    <string name="salvar">Salvar</string>
+    <string name="mancha">Manchas</string>
+    <string name="unha_quebradica">Unhas Quebradiças</string>
+    <string name="descolamento">Descolamento</string>
+    <string name="todos_os_campos_foram_limpos">Todos os Campos Foram Limpos!</string>
+    <string name="o_nome_deve_ser_preenchido">O Nome deve ser Preenchido</string>
+    <string name="o_endere_o_deve_ser_preenchido">O Endereço deve ser Preenchido</string>
+    <string name="o_celular_deve_ser_preenchido">O celular deve ser preenchido</string>
+    <string name="informe_se_possui_ou_n_o_diabetes">Informe se possui ou não Diabetes</string>
+    <string name="informe_se_o_cliente_fumante">Informe se o cliente é fumante</string>
+    <string name="informe_se_o_cliente_realiza_alguma_atividade">Informe se o cliente realiza alguma atividade</string>
+    <string name="dados_cadastrados_com_sucesso">Dados Cadastrados com sucesso!</string>
+
+    <string name="descricao">Descrição:</string>
+    <string name="valor">Valor:</string>
+    <string name="duracao">Duração:</string>
+
+    <string name="esmaltacao_mao">Esmaltação - Mão</string>
+    <string name="esmaltacao_pe">Esmaltação - Pé</string>
+    <string name="esmaltacao_decor_mao">Esmaltaçã com Decoração - Mão</string>
+    <string name="esmaltacao_decor_pe">Esmaltaçã com Decoração - Pè</string>
+    <string name="alongamento_gel">Alongamento - Gel</string>
+    <string name="alongamento_fibra">Alongamento - Fibra de vidro</string>
+    <string name="manutencao_alonga">Manutenção do Alongamento</string>
+    <string name="blindagem">Blindagem</string>
+    <string name="spa_pes">Spa dos Pés</string>
+    <string name="o_servi_o">"O Serviço: "</string>
+    <string name="foi_selecionado">Foi Selecionado</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="sobre">Sobre</string>
+    <string name="autor">Autor: Edson Vieira da Silva</string>
+    <string name="curso">Curso: Desenvolvimento Java para Dispositivos Móveis</string>
+    <string name="descricao_app">Aplicativo desenvolvido para o gerenciamento de um salão de manicure,
+        facilitando o agendamento de consultas, cadastro de clientes e serviços.</string>
+    <string name="email_edson">Email: edson.2012@alunos.utfpr.edu.br</string>
+    <string name="cadastro_de_servicos">Cadastrar um Novo Serviço:</string>
+    <string name="preco">Preço:</string>
+
+
+</resources>
