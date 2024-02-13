@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListaDeServicosActivity extends AppCompatActivity {
 
@@ -47,23 +48,9 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                 }
         );
 
-        ActivityResultLauncher<Intent> laucherNovoServico =
-                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                        new ActivityResultCallback<ActivityResult>() {
-                            @Override
-                            public void onActivityResult(ActivityResult result) {
-
-                                if(result.getResultCode() == Activity.RESULT_OK){
-
-                                }
-
-                            }
-                        });
-
-
     popularListViewServicos();
 
-    }
+    } //fim OnCreate
 
 
     private void popularListViewServicos() {
@@ -74,24 +61,46 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         listViewServicos.setAdapter(servicoAdapter);
 
-
-
-
-//        String[] descricoes = getResources().getStringArray(R.array.servicos);
-//        int[] duracoes = getResources().getIntArray(R.array.duracao_servicos);
-//        int[] precos = getResources().getIntArray(R.array.preco_servicos);
-//
-//        for(int i = 0 ; i< descricoes.length; i++){
-//
-//            servico = new Servico(descricoes[i], (double) precos[i], duracoes[i]);
-//
-//            servicos.add(servico);
-//
-//        }
-
-
-
     }
+
+    ActivityResultLauncher<Intent> launcherNovoServico =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+
+                            if (result.getResultCode() == Activity.RESULT_OK) {
+
+                                Intent intent = result.getData();
+
+                                Bundle bundle = intent.getExtras();
+
+                                if (bundle != null) {
+
+                                    String descricao = bundle.getString
+                                            (CadastroDeServicosActivity.DESCRICAO);
+
+                                    double preco = Double.parseDouble(
+                                            Objects.requireNonNull
+                                                    (bundle.getString
+                                                            (CadastroDeServicosActivity.PRECO))
+                                    );
+
+                                    int duracao = Integer.parseInt(
+                                            Objects.requireNonNull(bundle.getString
+                                                    (CadastroDeServicosActivity.DURACAO))
+                                    );
+
+                                    servico = new Servico(descricao, preco, duracao);
+
+                                    servicos.add(servico);
+
+                                    listViewServicos.deferNotifyDataSetChanged();
+
+                                }
+                            }
+                        }
+                    });
 
     public void sobre(View view){
 
@@ -99,10 +108,10 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     }
 
+    public void novoServico(View view){
 
+        CadastroDeServicosActivity.novoServico(this, launcherNovoServico);
 
+    }
 
-
-
-
-}
+} //fim Activity
