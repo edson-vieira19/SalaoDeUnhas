@@ -69,13 +69,13 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                         @Override
                         public void onActivityResult(ActivityResult result) {
 
-                            if(result.getResultCode() == Activity.RESULT_OK){
+                            if (result.getResultCode() == Activity.RESULT_OK) {
 
                                 Intent intent = result.getData();
 
                                 Bundle bundle = intent.getExtras();
 
-                                if(bundle != null){
+                                if (bundle != null) {
 
                                     String descricao = bundle.getString
                                             (CadastroDeServicosActivity.DESCRICAO);
