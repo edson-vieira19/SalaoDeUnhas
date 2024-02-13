@@ -73,24 +73,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         servicoAdapter = new ServicoAdapter(this, servicos);
 
         listViewServicos.setAdapter(servicoAdapter);
-
-
-
-
-//        String[] descricoes = getResources().getStringArray(R.array.servicos);
-//        int[] duracoes = getResources().getIntArray(R.array.duracao_servicos);
-//        int[] precos = getResources().getIntArray(R.array.preco_servicos);
-//
-//        for(int i = 0 ; i< descricoes.length; i++){
-//
-//            servico = new Servico(descricoes[i], (double) precos[i], duracoes[i]);
-//
-//            servicos.add(servico);
-//
-//        }
-
-
-
+        
     }
 
     public void sobre(View view){
