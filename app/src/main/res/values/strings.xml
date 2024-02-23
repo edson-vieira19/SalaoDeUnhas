@@ -66,6 +66,7 @@
     <string name="a_duracao_nao_pode_ser_vazio">a duracao nao pode ser vazio</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agendar_novo">Agendar Novo</string>
 
 
 </resources>
