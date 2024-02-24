@@ -1,10 +1,13 @@
 package br.com.edsonvieira.salaodeunhas;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -34,5 +37,31 @@ public class PrincipalActivity extends AppCompatActivity {
 
         viewPager.setAdapter(viewPageAdapter);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.principal_opcoes, menu);
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int menuItemClicado = item.getItemId();
+
+        if(menuItemClicado == R.id.menuItemCliente){
+                //abre activity lista de clientes
+        }
+        if(menuItemClicado == R.id.menuItemServico){
+                //abre activity lista de servicos
+        }
+        if (menuItemClicado == R.id.menuItemSobre){
+
+            SobreActivity.nova(this);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
