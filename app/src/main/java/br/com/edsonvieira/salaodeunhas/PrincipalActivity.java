@@ -60,6 +60,7 @@ public class PrincipalActivity extends AppCompatActivity {
         if (menuItemClicado == R.id.menuItemSobre){
 
             SobreActivity.nova(this);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
