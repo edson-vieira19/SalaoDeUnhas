@@ -25,10 +25,20 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     private ServicoAdapter servicoAdapter;
 
+    public static void nova(AppCompatActivity activity){
+
+        Intent intent = new Intent(activity, ListaDeServicosActivity.class);
+
+        activity.startActivity(intent);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_servicos);
+
+    setTitle(getString(R.string.servicos));
 
     listViewServicos = findViewById(R.id.listViewServicos);
 
@@ -55,7 +65,18 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     private void popularListViewServicos() {
 
+        String[] nomes = getResources().getStringArray(R.array.nomes_servicos);
+        int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
+        int[] preco = getResources().getIntArray(R.array.preco_servicos);
+
         servicos = new ArrayList<>();
+
+        for(int i=0; i < nomes.length; i++ ){
+
+            double valorDouble = (double) preco[i];
+
+            servicos.add(new Servico(nomes[i],valorDouble, duracao[i]));
+        }
 
         servicoAdapter = new ServicoAdapter(this, servicos);
 

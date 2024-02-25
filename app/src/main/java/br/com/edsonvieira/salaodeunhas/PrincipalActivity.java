@@ -52,10 +52,12 @@ public class PrincipalActivity extends AppCompatActivity {
         int menuItemClicado = item.getItemId();
 
         if(menuItemClicado == R.id.menuItemCliente){
-                //abre activity lista de clientes
+                ListaDeClientesActivity.nova(this);
         }
         if(menuItemClicado == R.id.menuItemServico){
-                //abre activity lista de servicos
+
+            ListaDeServicosActivity.nova(this);
+            return true;
         }
         if (menuItemClicado == R.id.menuItemSobre){
 
