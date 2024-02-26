@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -42,6 +43,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     listViewServicos = findViewById(R.id.listViewServicos);
 
+
+       /*  //codigo antigo
         listViewServicos.setOnItemClickListener(
                 new AdapterView.OnItemClickListener(){
                     @Override
@@ -57,10 +60,14 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                     }
                 }
         );
+    */
 
     popularListViewServicos();
 
-    } //fim OnCreate
+    registerForContextMenu(listViewServicos);
+
+
+    } //fim metodo OnCreate
 
 
     private void popularListViewServicos() {
@@ -135,4 +142,16 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     }
 
-} //fim Activity
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        getMenuInflater().inflate(R.menu.lista_servicos_menu_contexto, menu);
+
+
+
+
+
+    }
+}

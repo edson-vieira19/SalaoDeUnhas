@@ -73,5 +73,7 @@
     <string name="cliente">Clientes</string>
     <string name="servicos">Serviços</string>
     <string name="clientes">Clientes</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
 
 </resources>
