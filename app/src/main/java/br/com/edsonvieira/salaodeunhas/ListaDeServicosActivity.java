@@ -4,12 +4,14 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -69,6 +71,13 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     } //fim metodo OnCreate
 
+    private void excluir(int position) {
+
+        servicos.remove(position);
+
+        servicoAdapter.notifyDataSetChanged();
+
+    }
 
     private void popularListViewServicos() {
 
@@ -149,9 +158,28 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.lista_servicos_menu_contexto, menu);
 
-
-
-
-
     }
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info;
+
+        info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        int menuItemSelecionado = item.getItemId();
+
+        if(menuItemSelecionado == R.id.menuItemAlterarServico){
+
+            return true;
+        }
+        if(menuItemSelecionado == R.id.menuItemExcluirServico){
+
+            excluir(info.position);
+
+            return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
 }
