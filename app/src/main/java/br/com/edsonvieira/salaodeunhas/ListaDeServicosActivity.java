@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -23,7 +22,7 @@ import java.util.Objects;
 public class ListaDeServicosActivity extends AppCompatActivity {
 
     private ListView listViewServicos;
-    private ArrayList<Servico> servicos;
+    private ArrayList<Servico> arrayListServicos;
     private Servico servico;
 
     private ServicoAdapter servicoAdapter;
@@ -73,7 +72,19 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     private void excluir(int position) {
 
-        servicos.remove(position);
+        arrayListServicos.remove(position);
+
+        servicoAdapter.notifyDataSetChanged();
+
+    }
+
+    private void alterar(int position){
+
+        servico = arrayListServicos.get(position);
+
+        String descricao = servico.getDescricao();
+        double valor = servico.getPreco();
+        int duracao = servico.getDuracao();
 
         servicoAdapter.notifyDataSetChanged();
 
@@ -85,16 +96,16 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
         int[] preco = getResources().getIntArray(R.array.preco_servicos);
 
-        servicos = new ArrayList<>();
+        arrayListServicos = new ArrayList<>();
 
         for(int i=0; i < nomes.length; i++ ){
 
             double valorDouble = (double) preco[i];
 
-            servicos.add(new Servico(nomes[i],valorDouble, duracao[i]));
+            arrayListServicos.add(new Servico(nomes[i],valorDouble, duracao[i]));
         }
 
-        servicoAdapter = new ServicoAdapter(this, servicos);
+        servicoAdapter = new ServicoAdapter(this, arrayListServicos);
 
         listViewServicos.setAdapter(servicoAdapter);
 
@@ -130,7 +141,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                     servico = new Servico(descricao, preco, duracao);
 
-                                    servicos.add(servico);
+                                    arrayListServicos.add(servico);
 
                                     listViewServicos.deferNotifyDataSetChanged();
 
@@ -169,6 +180,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         int menuItemSelecionado = item.getItemId();
 
         if(menuItemSelecionado == R.id.menuItemAlterarServico){
+
+            alterar(info.position);
 
             return true;
         }
