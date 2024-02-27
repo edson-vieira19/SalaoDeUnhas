@@ -17,12 +17,12 @@
             android:exported="false" />
         <activity
             android:name=".PrincipalActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".CadastroDeServicosActivity"
@@ -32,10 +32,18 @@
             android:exported="false" />
         <activity
             android:name=".ListaDeServicosActivity"
-            android:exported="false"></activity>
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".CadastroDeClienteActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

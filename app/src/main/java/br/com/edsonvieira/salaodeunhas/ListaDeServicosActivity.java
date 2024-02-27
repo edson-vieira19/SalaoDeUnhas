@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,7 +41,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_servicos);
 
-    setTitle(getString(R.string.servicos));
+//    setTitle(getString(R.string.servicos));
 
     listViewServicos = findViewById(R.id.listViewServicos);
 
@@ -105,23 +106,42 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                     arrayListServicos.add(servico);
 
-                                    listViewServicos.deferNotifyDataSetChanged();
+                                    servicoAdapter.notifyDataSetChanged();
 
                                 }
                             }
                         }
                     });
 
-    public void sobre(View view){
 
-        SobreActivity.nova(this);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.lista_servicos_opcoes, menu);
+
+        return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-    public void novoServico(View view){
+        int menuItemSelecionado = item.getItemId();
 
-        CadastroDeServicosActivity.novoServico(this, launcherNovoServico);
+        if(menuItemSelecionado == R.id.menuItemAdicionarServico){
 
+            CadastroDeServicosActivity.novoServico(this, launcherNovoServico);
+
+            return true;
+        }
+        if(menuItemSelecionado == R.id.menuItemTelaSobre){
+
+            SobreActivity.nova(this);
+
+            return true;
+        }
+
+
+
+
+        return super.onOptionsItemSelected(item);
     }
-
 }
