@@ -51,15 +51,15 @@ public class PrincipalActivity extends AppCompatActivity {
 
         int menuItemClicado = item.getItemId();
 
-        if(menuItemClicado == R.id.menuItemCliente){
+        if(menuItemClicado == R.id.menuItemCliente_principal){
                 ListaDeClientesActivity.nova(this);
         }
-        if(menuItemClicado == R.id.menuItemServico){
+        if(menuItemClicado == R.id.menuItemServico_principal){
 
             ListaDeServicosActivity.nova(this);
             return true;
         }
-        if (menuItemClicado == R.id.menuItemSobre){
+        if (menuItemClicado == R.id.menuItemSobre_principal){
 
             SobreActivity.nova(this);
             return true;

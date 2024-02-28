@@ -10,11 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -41,7 +38,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_servicos);
 
-//    setTitle(getString(R.string.servicos));
+    setTitle(getString(R.string.lista_de_servicos));
 
     listViewServicos = findViewById(R.id.listViewServicos);
 
@@ -126,13 +123,13 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         int menuItemSelecionado = item.getItemId();
 
-        if(menuItemSelecionado == R.id.menuItemAdicionarServico){
+        if(menuItemSelecionado == R.id.menuItemAdicionar_lista_de_servicos){
 
             CadastroDeServicosActivity.novoServico(this, launcherNovoServico);
 
             return true;
         }
-        if(menuItemSelecionado == R.id.menuItemTelaSobre){
+        if(menuItemSelecionado == R.id.menuItemSobre_lista_de_servicos){
 
             SobreActivity.nova(this);
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,12 +36,13 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_de_servicos);
 
+        setTitle(getString(R.string.servicos));
+
         editTextDescricaoServico = findViewById(R.id.editTextDescricaoServico);
         editTextPrecoServico = findViewById(R.id.editTextPrecoServico);
         editTextDuracaoServico = findViewById(R.id.editTextDuracaoServico);
 
     }
-
     public void salvar(View view) {
 
         StringBuilder mensagem = new StringBuilder();
@@ -83,7 +85,6 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
         finish();
     }
-
     public void limpar(View view){
         editTextDescricaoServico.setText(null);
         editTextPrecoServico.setText(null);
@@ -91,4 +92,10 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         editTextDescricaoServico.requestFocus();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.cadastro_servicos_opcoes, menu);
+        return true;
+    }
 }

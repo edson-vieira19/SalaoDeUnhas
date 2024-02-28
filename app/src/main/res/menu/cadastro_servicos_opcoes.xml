@@ -2,23 +2,26 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
-        android:id="@+id/menuItemCliente_principal"
+        android:id="@+id/menuItemSalvar_cadastro_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_action_cliente"
-        android:title="@string/cliente"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/salvar"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menuItemServico_principal"
+        android:id="@+id/menuItemLimpar_cadastro_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_action_servico"
-        android:title="@string/servicos"
+        android:icon="@drawable/ic_action_clear"
+        android:title="@string/limpar"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menuItemSobre_principal"
+        android:id="@+id/menuItemCancelar_cadastro_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/sobre" />
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/cancelar"
+        app:showAsAction="ifRoom" />
 </menu>

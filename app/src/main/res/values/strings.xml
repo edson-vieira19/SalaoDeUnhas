@@ -75,5 +75,11 @@
     <string name="clientes">Clientes</string>
     <string name="alterar">Alterar</string>
     <string name="excluir">Excluir</string>
+    <string name="lista_de_servicos">Lista de Serviços</string>
+    <string name="cadastrar_editar_servico">Cadastrar ou Editar um Serviço:</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descricao_do_servico">Descrição do Serviço</string>
+    <string name="preco_do_servico">Preço do Serviço</string>
+    <string name="duracao_do_servico">Duração do Serviço</string>
 
 </resources>

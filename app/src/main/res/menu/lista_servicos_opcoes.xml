@@ -2,16 +2,18 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
-        android:id="@+id/menuItemAdicionarServico"
+        android:id="@+id/menuItemAdicionar_lista_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="@string/adicionar"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menuItemTelaSobre"
+        android:id="@+id/menuItemSobre_lista_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="@string/sobre" />
 </menu>
+
