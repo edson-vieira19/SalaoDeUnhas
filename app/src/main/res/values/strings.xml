@@ -81,5 +81,6 @@
     <string name="descricao_do_servico">Descrição do Serviço</string>
     <string name="preco_do_servico">Preço do Serviço</string>
     <string name="duracao_do_servico">Duração do Serviço</string>
+    <string name="editar">Editar</string>
 
 </resources>

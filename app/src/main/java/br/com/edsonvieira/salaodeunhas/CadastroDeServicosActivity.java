@@ -1,12 +1,14 @@
 package br.com.edsonvieira.salaodeunhas;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         editTextDuracaoServico = findViewById(R.id.editTextDuracaoServico);
 
     }
-    public void salvar(View view) {
+    private void salvar() {
 
         StringBuilder mensagem = new StringBuilder();
 
@@ -85,11 +87,22 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
         finish();
     }
-    public void limpar(View view){
+    private void limpar(){
+
         editTextDescricaoServico.setText(null);
         editTextPrecoServico.setText(null);
         editTextDuracaoServico.setText(null);
         editTextDescricaoServico.requestFocus();
+
+        Toast.makeText(this,
+                getString(R.string.todos_os_campos_foram_limpos)
+                ,Toast.LENGTH_SHORT).show();
+    }
+
+    private void cancelar(){
+
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
 
     @Override
@@ -97,5 +110,26 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.cadastro_servicos_opcoes, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int menuItemSelecionado = item.getItemId();
+
+        if (menuItemSelecionado == R.id.menuItemSalvar_cadastro_de_servicos) {
+            salvar();
+            return true;
+        }
+        if (menuItemSelecionado == R.id.menuItemLimpar_cadastro_de_servicos) {
+            limpar();
+            return true;
+        }
+        if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
+            cancelar();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
