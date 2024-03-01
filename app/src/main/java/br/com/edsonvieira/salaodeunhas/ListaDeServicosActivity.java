@@ -32,6 +32,15 @@ public class ListaDeServicosActivity extends AppCompatActivity {
     private ActionMode actionMode;
     private int posicaoSelecionada = -1;
 
+    public static void nova(AppCompatActivity activity) {
+
+
+        Intent intent = new Intent(activity, ListaDeServicosActivity.class);
+
+        activity.startActivity(intent);
+
+    }
+
     private ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -52,7 +61,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
             if (menuItemSelecionado == R.id.menuItemEditar_lista_servicos) {
 
-               // editarServico();
+                editarServico();
 
                 mode.finish();
 
@@ -73,7 +82,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         @Override
         public void onDestroyActionMode(ActionMode mode) {
 
-            if(viewSelecionada !=null){
+            if (viewSelecionada != null) {
                 viewSelecionada.setBackgroundColor(Color.TRANSPARENT);
             }
             actionMode = null;
@@ -82,17 +91,17 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         }
     };
 
+    private void editarServico() {
+
+        Servico servicoAEditar = arrayListServicos.get(posicaoSelecionada);
+
+        CadastroDeServicosActivity.editarServico(this,
+                launcherEditarServico, servicoAEditar);
+
+    }
     private void excluirServico() {
         arrayListServicos.remove(posicaoSelecionada);
         servicoAdapter.notifyDataSetChanged();
-    }
-
-    public static void nova(AppCompatActivity activity) {
-
-        Intent intent = new Intent(activity, ListaDeServicosActivity.class);
-
-        activity.startActivity(intent);
-
     }
 
     @Override
@@ -114,7 +123,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
 
-                if(actionMode != null){
+                if (actionMode != null) {
                     return false;
                 }
 
@@ -131,9 +140,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
-    } //fim metodo OnCreate
+    }
 
     private void popularListViewServicos() {
 
@@ -153,7 +160,6 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         servicoAdapter = new ServicoAdapter(this, arrayListServicos);
 
         listViewServicos.setAdapter(servicoAdapter);
-
     }
 
     ActivityResultLauncher<Intent> launcherNovoServico =
@@ -187,6 +193,48 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                                     servico = new Servico(descricao, preco, duracao);
 
                                     arrayListServicos.add(servico);
+
+                                    servicoAdapter.notifyDataSetChanged();
+
+                                }
+                            }
+                        }
+                    });
+
+    ActivityResultLauncher<Intent> launcherEditarServico =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+
+                            if (result.getResultCode() == Activity.RESULT_OK) {
+
+                                Intent intent = result.getData();
+
+                                Bundle bundle = intent.getExtras();
+
+                                if (bundle != null) {
+
+                                    String descricao = bundle.getString
+                                            (CadastroDeServicosActivity.DESCRICAO);
+
+                                    double preco = Double.parseDouble(
+                                            Objects.requireNonNull
+                                                    (bundle.getString
+                                                            (CadastroDeServicosActivity.PRECO))
+                                    );
+
+                                    int duracao = Integer.parseInt(
+                                            Objects.requireNonNull(bundle.getString
+                                                    (CadastroDeServicosActivity.DURACAO))
+                                    );
+
+                                    servico = arrayListServicos.get(posicaoSelecionada);
+                                    servico.setDescricao(descricao);
+                                    servico.setPreco(preco);
+                                    servico.setDuracao(duracao);
+
+                                    posicaoSelecionada = -1;
 
                                     servicoAdapter.notifyDataSetChanged();
 
