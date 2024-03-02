@@ -48,7 +48,6 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             inflater.inflate(R.menu.lista_servicos_item_selecionado, menu);
             return true;
         }
-
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             return false;
@@ -114,8 +113,6 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         listViewServicos = findViewById(R.id.listViewServicos);
 
         popularListViewServicos();
-
-        registerForContextMenu(listViewServicos);
 
         listViewServicos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listViewServicos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -219,10 +216,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                                             (CadastroDeServicosActivity.DESCRICAO);
 
                                     double preco = Double.parseDouble(
-                                            Objects.requireNonNull
-                                                    (bundle.getString
-                                                            (CadastroDeServicosActivity.PRECO))
-                                    );
+                                            Objects.requireNonNull(bundle.getString(
+                                                    CadastroDeServicosActivity.PRECO)));
 
                                     int duracao = Integer.parseInt(
                                             Objects.requireNonNull(bundle.getString

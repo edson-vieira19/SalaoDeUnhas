@@ -85,10 +85,10 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
                 editTextDescricaoServico.setText(descricaoEditar);
                 editTextPrecoServico.setText(String.valueOf(precoEditar));
-                editTextDuracaoServico.setText(duracaoEditar);
+                editTextDuracaoServico.setText(String.valueOf(duracaoEditar));
 
                 editTextDescricaoServico.requestFocus();
-                editTextDuracaoServico.setSelection(editTextDescricaoServico.getText().length());
+                editTextDescricaoServico.setSelection(editTextDescricaoServico.getText().length());
 
             }
         }
