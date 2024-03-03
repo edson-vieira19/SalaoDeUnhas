@@ -155,11 +155,11 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
                 , Toast.LENGTH_SHORT).show();
     }
 
-    private void cancelar() {
-
-        setResult(Activity.RESULT_CANCELED);
-        finish();
-    }
+//    private void cancelar() {
+//
+//        setResult(Activity.RESULT_CANCELED);
+//        finish();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -181,10 +181,10 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
             limpar();
             return true;
         }
-        if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
-            cancelar();
-            return true;
-        }
+//        if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
+//            cancelar();
+//            return true;
+//        }
         if(menuItemSelecionado == android.R.id.home){
             finish();
             return true;
