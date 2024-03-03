@@ -26,10 +26,12 @@
         </activity>
         <activity
             android:name=".CadastroDeServicosActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ListaDeServicosActivity"/>
         <activity
             android:name=".SobreActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ListaDeServicosActivity"/>
         <activity
             android:name=".ListaDeServicosActivity"
             android:exported="true">
@@ -42,7 +44,6 @@
         <activity
             android:name=".CadastroDeClienteActivity"
             android:exported="false">
-
         </activity>
 
         <meta-data

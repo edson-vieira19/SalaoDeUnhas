@@ -2,6 +2,7 @@ package br.com.edsonvieira.salaodeunhas;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -63,6 +64,11 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         editTextDescricaoServico = findViewById(R.id.editTextDescricaoServico);
         editTextPrecoServico = findViewById(R.id.editTextPrecoServico);
         editTextDuracaoServico = findViewById(R.id.editTextDuracaoServico);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -177,6 +183,10 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         }
         if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
             cancelar();
+            return true;
+        }
+        if(menuItemSelecionado == android.R.id.home){
+            finish();
             return true;
         }
 
