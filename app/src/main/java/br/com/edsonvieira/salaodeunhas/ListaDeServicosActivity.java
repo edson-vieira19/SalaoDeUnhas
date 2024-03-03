@@ -1,13 +1,5 @@
 package br.com.edsonvieira.salaodeunhas;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +11,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 public class ListaDeServicosActivity extends AppCompatActivity {
@@ -152,6 +153,9 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             double valorDouble = (double) preco[i];
 
             arrayListServicos.add(new Servico(nomes[i], valorDouble, duracao[i]));
+
+            Collections.sort(arrayListServicos, Servico.comparator);
+
         }
 
         servicoAdapter = new ServicoAdapter(this, arrayListServicos);
@@ -191,6 +195,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                     arrayListServicos.add(servico);
 
+                                    Collections.sort(arrayListServicos, Servico.comparator);
+
                                     servicoAdapter.notifyDataSetChanged();
 
                                 }
@@ -228,6 +234,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                                     servico.setDescricao(descricao);
                                     servico.setPreco(preco);
                                     servico.setDuracao(duracao);
+
+                                    Collections.sort(arrayListServicos, Servico.comparator);
 
                                     posicaoSelecionada = -1;
 
