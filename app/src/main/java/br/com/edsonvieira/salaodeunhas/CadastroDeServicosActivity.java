@@ -1,33 +1,57 @@
 package br.com.edsonvieira.salaodeunhas;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class CadastroDeServicosActivity extends AppCompatActivity {
 
+    public static final String MODO = "MODO";
+    public static final int NOVO = 1;
+    public static final int EDITAR = 2;
+    private int modo;
     public static final String DESCRICAO = "DESCRICAO";
     public static final String PRECO = "PRECO";
-
     public static final String DURACAO = "DURACAO";
-
     private EditText editTextDescricaoServico;
     private EditText editTextPrecoServico;
     private EditText editTextDuracaoServico;
+    private String descricaoEditar;
+    private double precoEditar;
+    private int duracaoEditar;
 
     public static void novoServico(AppCompatActivity activity,
-                                   ActivityResultLauncher<Intent>launcher){
+                                   ActivityResultLauncher<Intent> launcher) {
 
-        Intent intent = new Intent(activity,CadastroDeServicosActivity.class);
+        Intent intent = new Intent(activity, CadastroDeServicosActivity.class);
+
+        intent.putExtra(MODO, NOVO);
 
         launcher.launch(intent);
+    }
 
+    public static void editarServico(AppCompatActivity activity,
+                                     ActivityResultLauncher<Intent> launcher,
+                                     Servico servico) {
+
+        Intent intent = new Intent(activity, CadastroDeServicosActivity.class);
+
+        intent.putExtra(MODO, EDITAR);
+        intent.putExtra(DESCRICAO, servico.getDescricao());
+        intent.putExtra(PRECO, servico.getPreco());
+        intent.putExtra(DURACAO, servico.getDuracao());
+
+        launcher.launch(intent);
     }
 
     @Override
@@ -35,13 +59,48 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_de_servicos);
 
+        setTitle(getString(R.string.servicos));
+
         editTextDescricaoServico = findViewById(R.id.editTextDescricaoServico);
         editTextPrecoServico = findViewById(R.id.editTextPrecoServico);
         editTextDuracaoServico = findViewById(R.id.editTextDuracaoServico);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+
+            modo = bundle.getInt(MODO, NOVO);
+
+            if (modo == NOVO) {
+
+                setTitle("Novo Serviço");
+
+            } else if (modo == EDITAR) {
+
+                setTitle("Editar Serviço");
+
+                descricaoEditar = bundle.getString(DESCRICAO);
+                precoEditar = bundle.getDouble(PRECO);
+                duracaoEditar = bundle.getInt(DURACAO);
+
+                editTextDescricaoServico.setText(descricaoEditar);
+                editTextPrecoServico.setText(String.valueOf(precoEditar));
+                editTextDuracaoServico.setText(String.valueOf(duracaoEditar));
+
+                editTextDescricaoServico.requestFocus();
+                editTextDescricaoServico.setSelection(editTextDescricaoServico.getText().length());
+
+            }
+        }
     }
 
-    public void salvar(View view) {
+    private void salvar() {
 
         StringBuilder mensagem = new StringBuilder();
 
@@ -84,11 +143,53 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         finish();
     }
 
-    public void limpar(View view){
+    private void limpar() {
+
         editTextDescricaoServico.setText(null);
         editTextPrecoServico.setText(null);
         editTextDuracaoServico.setText(null);
         editTextDescricaoServico.requestFocus();
+
+        Toast.makeText(this,
+                getString(R.string.todos_os_campos_foram_limpos)
+                , Toast.LENGTH_SHORT).show();
     }
 
+    private void cancelar() {
+
+        setResult(Activity.RESULT_CANCELED);
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.cadastro_servicos_opcoes, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int menuItemSelecionado = item.getItemId();
+
+        if (menuItemSelecionado == R.id.menuItemSalvar_cadastro_de_servicos) {
+            salvar();
+            return true;
+        }
+        if (menuItemSelecionado == R.id.menuItemLimpar_cadastro_de_servicos) {
+            limpar();
+            return true;
+        }
+//        if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
+//            cancelar();
+//            return true;
+//        }
+        if(menuItemSelecionado == android.R.id.home){
+            cancelar();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -1,40 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="servicos">
+    <string-array name="nomes_servicos">
         <item>@string/esmaltacao_mao</item>
         <item>@string/esmaltacao_pe</item>
-        <item>@string/esmaltacao_decor_mao</item>
-        <item>@string/esmaltacao_decor_pe</item>
         <item>@string/alongamento_gel</item>
-        <item>@string/alongamento_fibra</item>
-        <item>@string/manutencao_alonga</item>
+<!--        <item>@string/alongamento_fibra</item>-->
+<!--        <item>@string/manutencao_alonga</item>-->
         <item>@string/blindagem</item>
-        <item>@string/spa_pes</item>
     </string-array>
 
     <integer-array name="duracao_servicos">
         <item>30</item>
         <item>30</item>
-        <item>45</item>
-        <item>45</item>
         <item>120</item>
-        <item>120</item>
+<!--        <item>120</item>-->
+<!--        <item>30</item>-->
         <item>30</item>
-        <item>30</item>
-        <item>45</item>
     </integer-array>
 
     <integer-array name="preco_servicos">
         <item>25</item>
         <item>25</item>
-        <item>40</item>
-        <item>40</item>
         <item>100</item>
-        <item>120</item>
-        <item>30</item>
+<!--        <item>120</item>-->
+<!--        <item>30</item>-->
         <item>60</item>
-        <item>50</item>
     </integer-array>
 
 

@@ -64,6 +64,23 @@
     <string name="a_descricao_nao_pode_ser_vazia">A descricao nao pode ser vazia.</string>
     <string name="o_pre_o_n_o_pode_ser_vazio">O preço não pode ser vazio</string>
     <string name="a_duracao_nao_pode_ser_vazio">a duracao nao pode ser vazio</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agendar_novo">Agendar Novo</string>
+    <string name="mes">Mês</string>
+    <string name="semana">Semana</string>
+    <string name="dia">Dia</string>
+    <string name="cliente">Clientes</string>
+    <string name="servicos">Serviços</string>
+    <string name="clientes">Clientes</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
+    <string name="lista_de_servicos">Lista de Serviços</string>
+    <string name="cadastrar_editar_servico">Cadastrar ou Editar um Serviço:</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descricao_do_servico">Descrição do Serviço</string>
+    <string name="preco_do_servico">Preço do Serviço</string>
+    <string name="duracao_do_servico">Duração do Serviço</string>
+    <string name="editar">Editar</string>
 
 </resources>

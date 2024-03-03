@@ -1,6 +1,16 @@
 package br.com.edsonvieira.salaodeunhas;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Servico {
+
+    public static Comparator comparator = new Comparator<Servico>() {
+        @Override
+        public int compare(Servico s1, Servico s2) {
+            return s1.getDescricao().compareTo(s2.getDescricao());
+        }
+    };
 
     private String descricao;
     private double preco;

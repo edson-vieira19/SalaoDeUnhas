@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.SalaoDeUnhas" parent="Theme.Material3.DayNight">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.SalaoDeUnhas" parent="Theme.Material3.Light">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 
-    <style name="Theme.SalaoDeUnhas" parent="Base.Theme.SalaoDeUnhas" />
+    <style name="Theme.SalaoDeUnhas" parent="Base.Theme.SalaoDeUnhas"/>
 </resources>
