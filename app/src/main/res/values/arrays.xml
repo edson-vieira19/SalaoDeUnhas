@@ -28,6 +28,90 @@
         <item>60</item>
     </integer-array>
 
+    <string-array name="nomes_clientes">
+        <item>Ana Beatriz Messias</item>
+        <item>Rosana da Silva</item>
+        <item>Eleonor Oliveira Sampaio</item>
+    </string-array>
+    
+    <string-array name="endereco_clientes">
+        <item>Av. XX de Março, 591</item>
+        <item>Rua Curitiba, 181</item>
+        <item>Rua das Flores, 47</item>
+    </string-array>
+    
+    <string-array name="celular_clientes">
+        <item>(43) 996334455</item>
+        <item>(43) 998324252</item>
+        <item>(43) 999112233</item>
+    </string-array>
+    
+    <string-array name="instagram_clientes">
+        <item>annabeatriz23</item>
+        <item>rosesilva43</item>
+        <item>samparioliveira33</item>
+    </string-array>
+    
+    <string-array name="micose">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="unha_encravada">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="manchas">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="unha_quebradica">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="descolamento">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="outro">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="diabetes">
+        <item>false</item>
+        <item>false</item>
+        <item>true</item>
+    </string-array>
+
+    <string-array name="fumante">
+        <item>false</item>
+        <item>false</item>
+        <item>true</item>
+    </string-array>
+    
+    <string-array name="atividade_desgaste">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="produto_alergia">
+        <item>@string/nenhum</item>
+        <item>@string/oleo_secante</item>
+        <item>@string/nenhum</item>
+    </string-array>
 
 
+    <string name="oleo_secante">Oleo Secante</string>
 </resources>

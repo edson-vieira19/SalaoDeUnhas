@@ -3,7 +3,7 @@
     <string name="cadastro_do_cliente">Cadastro do Cliente:</string>
     <string name="nome">Nome:</string>
     <string name="endereco">Endereço:</string>
-    <string name="celular">Celular/WhatsApp</string>
+    <string name="celular">Celular/WhatsApp:</string>
     <string name="instagram">Instagram:</string>
     <string name="anamnese">Anamnese:</string>
     <string name="possui_problema">Possui um ou mais dos problemas abaixo?</string>
@@ -82,5 +82,6 @@
     <string name="preco_do_servico">Preço do Serviço</string>
     <string name="duracao_do_servico">Duração do Serviço</string>
     <string name="editar">Editar</string>
+    <string name="tratamento_diferenciado">Necessita tratamento diferenciado?:</string>
 
 </resources>

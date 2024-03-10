@@ -1,12 +1,10 @@
 package br.com.edsonvieira.salaodeunhas;
 
 public class Cliente {
-
     private String nome;
     private String endereco;
     private String celular;
     private String instagram;
-
     private boolean micose;
     private boolean unhaEncravada;
     private boolean manchas;
@@ -16,7 +14,6 @@ public class Cliente {
     private boolean diabetes;
     private boolean fumante;
     private boolean atividadeDesgaste;
-
     private Produto produtoEscolhido;
 
     public String getNome() {
