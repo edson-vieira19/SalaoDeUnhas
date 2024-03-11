@@ -16,6 +16,28 @@ public class Cliente {
     private boolean atividadeDesgaste;
     private Produto produtoEscolhido;
 
+    public Cliente(String nome, String endereco, String celular, String instagram,
+                   boolean micose, boolean unhaEncravada, boolean manchas,
+                   boolean unha_quebradica, boolean descolamento, boolean outro,
+                   boolean diabetes, boolean fumante, boolean atividadeDesgaste,
+                   Produto produtoEscolhido) {
+
+        this.nome = nome;
+        this.endereco = endereco;
+        this.celular = celular;
+        this.instagram = instagram;
+        this.micose = micose;
+        this.unhaEncravada = unhaEncravada;
+        this.manchas = manchas;
+        this.unha_quebradica = unha_quebradica;
+        this.descolamento = descolamento;
+        this.outro = outro;
+        this.diabetes = diabetes;
+        this.fumante = fumante;
+        this.atividadeDesgaste = atividadeDesgaste;
+        this.produtoEscolhido = produtoEscolhido;
+    }
+
     public String getNome() {
         return nome;
     }

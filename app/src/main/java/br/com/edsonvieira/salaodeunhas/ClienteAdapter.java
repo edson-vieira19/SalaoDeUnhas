@@ -22,7 +22,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.MyViewHo
             super(itemView);
 
             textViewValorNomeCliente = itemView.
-                    findViewById(R.id.textViewNomeCliente);
+                    findViewById(R.id.textViewValorNomeCliente);
             textViewCelularCliente = itemView.
                     findViewById(R.id.textViewCelularCliente);
             textViewTratamentoDiferenciado = itemView.
@@ -44,19 +44,28 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+
+        Cliente cliente = listaDeClientes.get(i);
+
+        holder.textViewValorNomeCliente.setText(cliente.getNome());
+        holder.textViewCelularCliente.setText(cliente.getCelular());
+
+        if(cliente.isDiabetes() || cliente.isAtividadeDesgaste() ||
+            cliente.isDescolamento() || cliente.isManchas() || cliente.isMicose()
+                || cliente.isOutro() || cliente.isUnha_quebradica()
+                || cliente.isUnhaEncravada() || cliente.isFumante()
+                || !cliente.getProdutoEscolhido().getNome().equals("Nenhum")
+          ) {
+            holder.textViewTratamentoDiferenciado.setText("Sim");
+        }
+        else{
+            holder.textViewTratamentoDiferenciado.setText("Não");
+        }
 
     }
-
     @Override
     public int getItemCount() {
-        return 0;
+        return listaDeClientes.size();
     }
-
-
-
-
-
-
-
 }

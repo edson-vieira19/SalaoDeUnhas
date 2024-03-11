@@ -52,66 +52,64 @@
         <item>samparioliveira33</item>
     </string-array>
     
-    <string-array name="micose">
+    <string-array name="micose_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="unha_encravada">
+    <string-array name="unha_encravada_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="manchas">
+    <string-array name="manchas_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="unha_quebradica">
+    <string-array name="unha_quebradica_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="descolamento">
+    <string-array name="descolamento_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="outro">
+    <string-array name="outro_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="diabetes">
+    <string-array name="diabetes_clientes">
         <item>false</item>
         <item>false</item>
         <item>true</item>
     </string-array>
 
-    <string-array name="fumante">
+    <string-array name="fumante_clientes">
         <item>false</item>
         <item>false</item>
         <item>true</item>
     </string-array>
     
-    <string-array name="atividade_desgaste">
+    <string-array name="atividade_desgaste_clientes">
         <item>false</item>
         <item>false</item>
         <item>false</item>
     </string-array>
 
-    <string-array name="produto_alergia">
-        <item>@string/nenhum</item>
-        <item>@string/oleo_secante</item>
-        <item>@string/nenhum</item>
+    <string-array name="produto_alergia_clientes">
+        <item>NENHUM</item>
+        <item>OLEO_SECANTE</item>
+        <item>NENHUM</item>
     </string-array>
 
-
-    <string name="oleo_secante">Oleo Secante</string>
 </resources>

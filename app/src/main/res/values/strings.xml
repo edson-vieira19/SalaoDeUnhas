@@ -83,5 +83,6 @@
     <string name="duracao_do_servico">Duração do Serviço</string>
     <string name="editar">Editar</string>
     <string name="tratamento_diferenciado">Necessita tratamento diferenciado?:</string>
+    <string name="oleo_secante">Oleo Secante</string>
 
 </resources>
