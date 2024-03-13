@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MostrarDetalhesClienteActivity">
+
+    <TextView
+        android:id="@+id/textViewNome_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorNome_detalhesCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewNome_detalhesCliente"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEndereco_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/endereco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNome_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorEndereco_detalhesCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewEndereco_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorNome_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewCelular_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/celular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndereco_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorCelular_detalhesCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewCelular_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorEndereco_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewInstagram_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/instagram"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCelular_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorInstagram_clientDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewInstagram_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorCelular_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewMicose_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_micose_ou_fungo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInstagram_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorMicose_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewMicose_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorInstagram_clientDetails" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_unha_encravada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMicose_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewPossuiManchas_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_manchas_nas_unhas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textViewValorUnhaEncrvada_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorMicose_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorManchas_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewPossuiManchas_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorUnhaEncrvada_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewUnhaQuebradica_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_unhas_quebradicas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPossuiManchas_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorUnhaQuebradica_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewUnhaQuebradica_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorManchas_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewDescolamento_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_descolamento_unha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUnhaQuebradica_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorDescolamento_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewDescolamento_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorUnhaQuebradica_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewDiabetes_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possui_diabetes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescolamento_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorDiabetes_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewDiabetes_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorDescolamento_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewFumante_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/fumante"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiabetes_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorFumante_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewFumante_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiabetes_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewAtividade_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/realiza_atividade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFumante_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorAtividade_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewAtividade_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorFumante_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewAlergia_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/possuiAlergia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAtividade_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorAlergia_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nao"
+        app:layout_constraintStart_toEndOf="@+id/textViewAlergia_detalhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorAtividade_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewProduto_detallhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/produto_alergenico"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAlergia_detalhesCliente" />
+
+    <TextView
+        android:id="@+id/textViewValorProduto_detalhesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nenhum"
+        app:layout_constraintStart_toEndOf="@+id/textViewProduto_detallhesCliente"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorAlergia_detalhesCliente" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

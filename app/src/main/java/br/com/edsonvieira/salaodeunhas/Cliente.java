@@ -10,7 +10,6 @@ public class Cliente {
     private boolean manchas;
     private boolean unha_quebradica;
     private boolean descolamento;
-    private boolean outro;
     private boolean diabetes;
     private boolean fumante;
     private boolean atividadeDesgaste;
@@ -18,7 +17,7 @@ public class Cliente {
 
     public Cliente(String nome, String endereco, String celular, String instagram,
                    boolean micose, boolean unhaEncravada, boolean manchas,
-                   boolean unha_quebradica, boolean descolamento, boolean outro,
+                   boolean unha_quebradica, boolean descolamento,
                    boolean diabetes, boolean fumante, boolean atividadeDesgaste,
                    Produto produtoEscolhido) {
 
@@ -31,7 +30,6 @@ public class Cliente {
         this.manchas = manchas;
         this.unha_quebradica = unha_quebradica;
         this.descolamento = descolamento;
-        this.outro = outro;
         this.diabetes = diabetes;
         this.fumante = fumante;
         this.atividadeDesgaste = atividadeDesgaste;
@@ -108,14 +106,6 @@ public class Cliente {
 
     public void setDescolamento(boolean descolamento) {
         this.descolamento = descolamento;
-    }
-
-    public boolean isOutro() {
-        return outro;
-    }
-
-    public void setOutro(boolean outro) {
-        this.outro = outro;
     }
 
     public boolean isDiabetes() {

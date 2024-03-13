@@ -84,5 +84,19 @@
     <string name="editar">Editar</string>
     <string name="tratamento_diferenciado">Necessita tratamento diferenciado?:</string>
     <string name="oleo_secante">Oleo Secante</string>
+    <string name="detalhes_do_cliente">Detalhes do Cliente</string>
+    <string name="possui_problema_preexistente">Possui problema preexistente nas unhas?</string>
+    <string name="possui_micose_ou_fungo">Possui micose ou fungo?</string>
+    <string name="possui_unha_encravada">Possui unha encravada?</string>
+    <string name="possui_manchas_nas_unhas">Possui manchas nas unhas?</string>
+    <string name="possui_unhas_quebradicas">Possui unhas quebradiças?</string>
+    <string name="possui_descolamento_unha">Possui descolamento de unha?</string>
+    <string name="possui_diabetes">Possui diabetes?</string>
+    <string name="realiza_atividade">Atividade desgastante para as unhas?</string>
+    <string name="produto_alergenico">Produto alergenico:</string>
+    <string name="aviso">Aviso</string>
+    <string name="ok">Ok</string>
+    <string name="erro">Erro</string>
+    <string name="confirmacao">Confirmação</string>
 
 </resources>

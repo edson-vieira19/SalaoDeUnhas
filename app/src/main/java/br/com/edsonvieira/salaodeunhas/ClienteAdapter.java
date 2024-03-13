@@ -1,5 +1,6 @@
 package br.com.edsonvieira.salaodeunhas;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,9 @@ import java.util.List;
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.MyViewHolder>{
 
     private List<Cliente> listaDeClientes;
+    private Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView textViewValorNomeCliente;
         TextView textViewCelularCliente;
         TextView textViewTratamentoDiferenciado;
@@ -29,8 +31,9 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.MyViewHo
                     findViewById(R.id.textViewTratamentoDiferenciado);
         }
     }
-    public ClienteAdapter(List<Cliente> listaDeClientes){
+    public ClienteAdapter(Context context, List<Cliente> listaDeClientes){
         this.listaDeClientes = listaDeClientes;
+        this.context = context;
     }
     @NonNull
     @Override
@@ -48,21 +51,22 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.MyViewHo
 
         Cliente cliente = listaDeClientes.get(i);
 
+
         holder.textViewValorNomeCliente.setText(cliente.getNome());
         holder.textViewCelularCliente.setText(cliente.getCelular());
 
-        if(cliente.isDiabetes() || cliente.isAtividadeDesgaste() ||
-            cliente.isDescolamento() || cliente.isManchas() || cliente.isMicose()
-                || cliente.isOutro() || cliente.isUnha_quebradica()
+        if (cliente.isDiabetes() || cliente.isAtividadeDesgaste() ||
+                cliente.isDescolamento() || cliente.isManchas() || cliente.isMicose()
+                || cliente.isUnha_quebradica()
                 || cliente.isUnhaEncravada() || cliente.isFumante()
-                || !cliente.getProdutoEscolhido().getNome().equals("Nenhum")
-          ) {
-            holder.textViewTratamentoDiferenciado.setText("Sim");
+                || !cliente.getProdutoEscolhido().getNome().equals(
+                        context.getString(R.string.nenhum))
+        ) {
+            holder.textViewTratamentoDiferenciado.setText(context.getString(R.string.sim));
         }
         else{
-            holder.textViewTratamentoDiferenciado.setText("Não");
+            holder.textViewTratamentoDiferenciado.setText(context.getString(R.string.nao));
         }
-
     }
     @Override
     public int getItemCount() {

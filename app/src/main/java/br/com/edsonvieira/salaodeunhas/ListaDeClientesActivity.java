@@ -8,15 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.edsonvieira.salaodeunhas.utils.RecyclerItemClickListener;
+
 public class ListaDeClientesActivity extends AppCompatActivity {
 
     private static final String TAG = "ListaDeClientesActivity";
-    private List<Cliente> arrayListClientes;
+    private ArrayList<Cliente> arrayListClientes;
     private RecyclerView recyclerViewListaClientes;
     private RecyclerView.LayoutManager layoutManager;
     private ClienteAdapter clienteAdapter;
@@ -47,6 +50,35 @@ public class ListaDeClientesActivity extends AppCompatActivity {
                 this, LinearLayout.VERTICAL));
 
         popularLista();
+
+        recyclerViewListaClientes.addOnItemTouchListener(new RecyclerItemClickListener(
+                getApplicationContext(),
+                recyclerViewListaClientes,
+                new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                Cliente cliente = arrayListClientes.get(position);
+
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }
+        ));
+
+
+
+
+
     }
 
     private void popularLista() {
@@ -62,7 +94,6 @@ public class ListaDeClientesActivity extends AppCompatActivity {
         String[] manchas = getResources().getStringArray(R.array.manchas_clientes);
         String[] unhaQuebradicas = getResources().getStringArray(R.array.unha_quebradica_clientes);
         String[] descolamentos = getResources().getStringArray(R.array.descolamento_clientes);
-        String[] outros = getResources().getStringArray(R.array.outro_clientes);
         String[] diabetes = getResources().getStringArray(R.array.diabetes_clientes);
         String[] fumantes = getResources().getStringArray(R.array.fumante_clientes);
         String[] atividadeDesgaste = getResources().getStringArray(R.array.atividade_desgaste_clientes);
@@ -77,7 +108,6 @@ public class ListaDeClientesActivity extends AppCompatActivity {
                    Boolean.parseBoolean(manchas[cont]),
                    Boolean.parseBoolean(unhaQuebradicas[cont]),
                    Boolean.parseBoolean(descolamentos[cont]),
-                   Boolean.parseBoolean(outros[cont]),
                    Boolean.parseBoolean(diabetes[cont]),
                    Boolean.parseBoolean(fumantes[cont]),
                    Boolean.parseBoolean(atividadeDesgaste[cont]),
@@ -89,7 +119,7 @@ public class ListaDeClientesActivity extends AppCompatActivity {
 
 
 
-        clienteAdapter = new ClienteAdapter(arrayListClientes);
+        clienteAdapter = new ClienteAdapter(this, arrayListClientes);
 
         recyclerViewListaClientes.setAdapter(clienteAdapter);
 

@@ -21,14 +21,11 @@ public class CadastroDeClienteActivity extends AppCompatActivity {
     private EditText editTextEndereco;
     private  EditText editTextCelular;
     private EditText editTextInstagram;
-
     private CheckBox checkBoxMicose;
     private CheckBox checkBoxUnhaEncravada;
     private CheckBox checkBoxMancha;
     private CheckBox checkBoxUnhaQuebradica;
-
     private CheckBox checkBoxDescolamento;
-    private CheckBox checkBoxOutro;
 
     private RadioGroup radioGroupDiabetes;
     private RadioGroup radioGroupFumante;
@@ -60,7 +57,6 @@ public class CadastroDeClienteActivity extends AppCompatActivity {
         checkBoxMancha = findViewById(R.id.checkBoxMancha);
         checkBoxUnhaQuebradica = findViewById(R.id.checkBoxUmhasQuebradica);
         checkBoxDescolamento = findViewById(R.id.checkBoxDescolamento);
-        checkBoxOutro = findViewById(R.id.checkBoxOutro);
         radioGroupDiabetes = findViewById(R.id.radioGroupDiabetes);
         radioGroupFumante = findViewById(R.id.radioGroupFumante);
         radioGroupAtividade = findViewById(R.id.radioGroupAtividade);
@@ -108,7 +104,6 @@ public class CadastroDeClienteActivity extends AppCompatActivity {
         checkBoxMancha.setChecked(false);
         checkBoxUnhaQuebradica.setChecked(false);
         checkBoxDescolamento.setChecked(false);
-        checkBoxOutro.setChecked(false);
         radioGroupDiabetes.clearCheck();
         radioGroupFumante.clearCheck();
         radioGroupAtividade.clearCheck();
