@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
+import br.com.edsonvieira.salaodeunhas.model.Servico;
+
 public class ListaDeServicosActivity extends AppCompatActivity {
 
     private ListView listViewServicos;

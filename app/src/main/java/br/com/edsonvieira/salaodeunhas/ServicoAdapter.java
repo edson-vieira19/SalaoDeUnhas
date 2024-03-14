@@ -11,6 +11,8 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
+import br.com.edsonvieira.salaodeunhas.model.Servico;
+
 public class ServicoAdapter extends BaseAdapter {
 
     private Context context;

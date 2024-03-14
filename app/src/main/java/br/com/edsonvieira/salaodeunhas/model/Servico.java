@@ -1,8 +1,12 @@
-package br.com.edsonvieira.salaodeunhas;
+package br.com.edsonvieira.salaodeunhas.model;
 
-import java.util.Collections;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Comparator;
 
+@Entity
 public class Servico {
 
     public static Comparator comparator = new Comparator<Servico>() {
@@ -12,14 +16,26 @@ public class Servico {
         }
     };
 
+    @PrimaryKey(autoGenerate = true)
+    private long id;
+
+    @NonNull
     private String descricao;
     private double preco;
     private int duracao;
 
-    public Servico(String descricao, double valor, int duracao) {
+    public Servico(String descricao, double preco, int duracao) {
         this.descricao = descricao;
-        this.preco = valor;
+        this.preco = preco;
         this.duracao = duracao;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDescricao() {
