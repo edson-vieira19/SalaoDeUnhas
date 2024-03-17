@@ -9,7 +9,8 @@ import br.com.edsonvieira.salaodeunhas.R;
 public class UtilsGui {
 
 
-    public static void aviso(Context context,int idMensagem){
+    public static void aviso(Context context,int idMensagem,
+                             DialogInterface.OnClickListener listener){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -17,19 +18,19 @@ public class UtilsGui {
         builder.setIcon(android.R.drawable.ic_dialog_info);
         builder.setMessage(idMensagem);
 
-        builder.setNeutralButton(R.string.ok, null);
+        builder.setNeutralButton(R.string.ok, listener);
 
         AlertDialog alert = builder.create();
         alert.show();
     }
 
-    public static void avisoErro(Context context, int idMensagem){
+    public static void avisoErro(Context context, String mensagem){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         builder.setTitle(R.string.erro);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setMessage(idMensagem);
+        builder.setMessage(mensagem);
 
         builder.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override

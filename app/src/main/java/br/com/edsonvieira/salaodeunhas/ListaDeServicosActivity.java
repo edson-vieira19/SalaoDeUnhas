@@ -1,6 +1,7 @@
 package br.com.edsonvieira.salaodeunhas;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,17 +20,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import br.com.edsonvieira.salaodeunhas.model.Servico;
+import br.com.edsonvieira.salaodeunhas.persistencia.SalaoDeUnhasDatabase;
+import br.com.edsonvieira.salaodeunhas.utils.UtilsGui;
 
 public class ListaDeServicosActivity extends AppCompatActivity {
 
     private ListView listViewServicos;
-    private ArrayList<Servico> arrayListServicos;
-    private Servico servico;
+    private List<Servico> listaServicos;
     private ServicoAdapter servicoAdapter;
     private View viewSelecionada;
     private ActionMode actionMode;
@@ -71,7 +73,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             }
             if (menuItemSelecionado == R.id.meuItemExcluir_lista_servicos) {
 
-                excluirServico();
+                excluirServico(mode);
 
                 mode.finish();
 
@@ -95,14 +97,62 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     private void editarServico() {
 
-        Servico servicoAEditar = arrayListServicos.get(posicaoSelecionada);
+        Servico servicoAEditar = listaServicos.get(posicaoSelecionada);
 
         CadastroDeServicosActivity.editarServico(this,
                 launcherEditarServico, servicoAEditar);
 
     }
-    private void excluirServico() {
-        arrayListServicos.remove(posicaoSelecionada);
+    private void excluirServico(final ActionMode mode) {
+
+        final Servico servico = listaServicos.get(posicaoSelecionada);
+
+        String mensagem = getString(R.string.deseja_realmente_excluir) + "\n " + "\"" +
+                servico.getDescricao() + "\"";
+
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+
+                    case DialogInterface.BUTTON_POSITIVE:
+
+                        SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase
+                                .getDatabase(ListaDeServicosActivity.this);
+
+                        int qtdAlterada = database.getServicoDao().delete(servico);
+
+                        if(qtdAlterada > 0){
+                            listaServicos.remove(posicaoSelecionada);
+                            servicoAdapter.notifyDataSetChanged();
+                            mode.finish();
+
+                        } else {
+                            UtilsGui.avisoErro(ListaDeServicosActivity.this,
+                                    getString(R.string.erro_ao_tentar_apagar));
+                        }
+                        break;
+
+                    case  DialogInterface.BUTTON_NEGATIVE:
+
+                        break;
+
+                }
+            }
+        };
+
+
+
+
+
+
+
+        SalaoDeUnhasDatabase database =
+                SalaoDeUnhasDatabase.getDatabase(this);
+
+                
+
+        listaServicos.remove(posicaoSelecionada);
         servicoAdapter.notifyDataSetChanged();
     }
 
@@ -114,6 +164,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         setTitle(getString(R.string.lista_de_servicos));
 
         listViewServicos = findViewById(R.id.listViewServicos);
+
+        popularBanco();
 
         popularListViewServicos();
 
@@ -144,23 +196,13 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
     private void popularListViewServicos() {
 
-        String[] nomes = getResources().getStringArray(R.array.nomes_servicos);
-        int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
-        int[] preco = getResources().getIntArray(R.array.preco_servicos);
+        SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.getDatabase(this);
 
-        arrayListServicos = new ArrayList<>();
+        listaServicos = database.getServicoDao().queryAllAscending();
 
-        for (int i = 0; i < nomes.length; i++) {
+        //Collections.sort(listaServicos, Servico.comparator);
 
-            double valorDouble = (double) preco[i];
-
-            arrayListServicos.add(new Servico(nomes[i], valorDouble, duracao[i]));
-
-            Collections.sort(arrayListServicos, Servico.comparator);
-
-        }
-
-        servicoAdapter = new ServicoAdapter(this, arrayListServicos);
+        servicoAdapter = new ServicoAdapter(this, listaServicos);
 
         listViewServicos.setAdapter(servicoAdapter);
     }
@@ -179,25 +221,18 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                 if (bundle != null) {
 
-                                    String descricao = bundle.getString
-                                            (CadastroDeServicosActivity.DESCRICAO);
+                                    SalaoDeUnhasDatabase database =
+                                            SalaoDeUnhasDatabase.getDatabase(
+                                                    ListaDeServicosActivity.this);
 
-                                    double preco = Double.parseDouble(
-                                            Objects.requireNonNull
-                                                    (bundle.getString
-                                                            (CadastroDeServicosActivity.PRECO))
-                                    );
+                                    long id = bundle.getLong(CadastroDeServicosActivity.ID);
 
-                                    int duracao = Integer.parseInt(
-                                            Objects.requireNonNull(bundle.getString
-                                                    (CadastroDeServicosActivity.DURACAO))
-                                    );
+                                    Servico servicoInserido =
+                                            database.getServicoDao().queryForId(id);
 
-                                    servico = new Servico(descricao, preco, duracao);
+                                    listaServicos.add(servicoInserido);
 
-                                    arrayListServicos.add(servico);
-
-                                    Collections.sort(arrayListServicos, Servico.comparator);
+                                    Collections.sort(listaServicos, Servico.comparator);
 
                                     servicoAdapter.notifyDataSetChanged();
 
@@ -220,24 +255,17 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                 if (bundle != null) {
 
-                                    String descricao = bundle.getString
-                                            (CadastroDeServicosActivity.DESCRICAO);
+                                    SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.
+                                            getDatabase(ListaDeServicosActivity.this);
 
-                                    double preco = Double.parseDouble(
-                                            Objects.requireNonNull(bundle.getString(
-                                                    CadastroDeServicosActivity.PRECO)));
+                                    long id = bundle.getLong(CadastroDeServicosActivity.ID);
 
-                                    int duracao = Integer.parseInt(
-                                            Objects.requireNonNull(bundle.getString
-                                                    (CadastroDeServicosActivity.DURACAO))
-                                    );
+                                    Servico servicoEditado =
+                                            database.getServicoDao().queryForId(id);
 
-                                    servico = arrayListServicos.get(posicaoSelecionada);
-                                    servico.setDescricao(descricao);
-                                    servico.setPreco(preco);
-                                    servico.setDuracao(duracao);
+                                    listaServicos.set(posicaoSelecionada, servicoEditado);
 
-                                    Collections.sort(arrayListServicos, Servico.comparator);
+                                    Collections.sort(listaServicos, Servico.comparator);
 
                                     posicaoSelecionada = -1;
 
@@ -276,4 +304,29 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    //cadastra alguns servicos iniciais no banco
+    private void popularBanco(){
+
+        SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.getDatabase(this);
+
+        String[] nomes = getResources().getStringArray(R.array.nomes_servicos);
+        int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
+        int[] preco = getResources().getIntArray(R.array.preco_servicos);
+
+        for (int i = 0; i < nomes.length; i++) {
+
+            double valorDouble = (double) preco[i];
+
+            Servico servico = new Servico(nomes[i], valorDouble, duracao[i]);
+
+            database.getServicoDao().insert(servico);
+
+        }
+    }
+
 }
+
+
+

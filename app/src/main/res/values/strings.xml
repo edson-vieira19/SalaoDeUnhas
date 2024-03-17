@@ -98,5 +98,9 @@
     <string name="ok">Ok</string>
     <string name="erro">Erro</string>
     <string name="confirmacao">Confirmação</string>
+    <string name="erro_ao_inserir_o_servico_no_banco">Erro ao inserir o Servico no banco</string>
+    <string name="erro_ao_atualizar_servico_no_banco">Erro ao atualizar Servico no banco</string>
+    <string name="deseja_realmente_excluir">"Deseja realmente excluir? "</string>
+    <string name="erro_ao_tentar_apagar">Erro ao tentar apagar</string>
 
 </resources>

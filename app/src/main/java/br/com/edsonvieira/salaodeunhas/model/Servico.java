@@ -9,7 +9,7 @@ import java.util.Comparator;
 @Entity
 public class Servico {
 
-    public static Comparator comparator = new Comparator<Servico>() {
+    public static Comparator<Servico> comparator = new Comparator<Servico>() {
         @Override
         public int compare(Servico s1, Servico s2) {
             return s1.getDescricao().compareTo(s2.getDescricao());

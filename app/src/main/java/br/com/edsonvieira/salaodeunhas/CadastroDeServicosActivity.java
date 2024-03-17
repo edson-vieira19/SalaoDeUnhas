@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.edsonvieira.salaodeunhas.model.Servico;
+import br.com.edsonvieira.salaodeunhas.persistencia.SalaoDeUnhasDatabase;
+import br.com.edsonvieira.salaodeunhas.utils.UtilsGui;
 
 public class CadastroDeServicosActivity extends AppCompatActivity {
 
@@ -21,15 +23,11 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
     public static final int NOVO = 1;
     public static final int EDITAR = 2;
     private int modo;
-    public static final String DESCRICAO = "DESCRICAO";
-    public static final String PRECO = "PRECO";
-    public static final String DURACAO = "DURACAO";
+    public static final String ID = "ID";
     private EditText editTextDescricaoServico;
     private EditText editTextPrecoServico;
     private EditText editTextDuracaoServico;
-    private String descricaoEditar;
-    private double precoEditar;
-    private int duracaoEditar;
+    private Servico servicoEditar;
 
     public static void novoServico(AppCompatActivity activity,
                                    ActivityResultLauncher<Intent> launcher) {
@@ -48,9 +46,7 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         Intent intent = new Intent(activity, CadastroDeServicosActivity.class);
 
         intent.putExtra(MODO, EDITAR);
-        intent.putExtra(DESCRICAO, servico.getDescricao());
-        intent.putExtra(PRECO, servico.getPreco());
-        intent.putExtra(DURACAO, servico.getDuracao());
+        intent.putExtra(ID, servico.getId());
 
         launcher.launch(intent);
     }
@@ -72,6 +68,7 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
+
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
@@ -86,15 +83,19 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
                 setTitle("Editar Serviço");
 
-                descricaoEditar = bundle.getString(DESCRICAO);
-                precoEditar = bundle.getDouble(PRECO);
-                duracaoEditar = bundle.getInt(DURACAO);
+                long idServico = bundle.getLong(ID);
 
-                editTextDescricaoServico.setText(descricaoEditar);
-                editTextPrecoServico.setText(String.valueOf(precoEditar));
-                editTextDuracaoServico.setText(String.valueOf(duracaoEditar));
+                SalaoDeUnhasDatabase database
+                        = SalaoDeUnhasDatabase.getDatabase(this);
+
+                servicoEditar = database.getServicoDao().queryForId(idServico);
+
+                editTextDescricaoServico.setText(servicoEditar.getDescricao());
+                editTextPrecoServico.setText(String.valueOf(servicoEditar.getPreco()));
+                editTextDuracaoServico.setText(String.valueOf(servicoEditar.getDuracao()));
 
                 editTextDescricaoServico.requestFocus();
+                
                 editTextDescricaoServico.setSelection(editTextDescricaoServico.getText().length());
 
             }
@@ -129,20 +130,66 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         }
 
         if (!valido) {
-            Toast.makeText(this, mensagem.toString(), Toast.LENGTH_LONG).show();
+
+            UtilsGui.avisoErro(this, mensagem.toString());
+
             editTextDescricaoServico.requestFocus();
+
+            return;
+        }
+
+        if(modo == EDITAR && descricao.equals(servicoEditar.getDescricao())
+            && preco.equals(String.valueOf(servicoEditar.getPreco()))
+            && duracao.equals(String.valueOf(servicoEditar.getDuracao()))){
+            cancelar();
+            finish();
         }
 
         Intent intent = new Intent();
 
-        intent.putExtra(CadastroDeServicosActivity.DESCRICAO, descricao);
-        intent.putExtra(CadastroDeServicosActivity.PRECO, preco);
-        intent.putExtra(CadastroDeServicosActivity.DURACAO, duracao);
+        SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.getDatabase(this);
 
-        setResult(Activity.RESULT_OK, intent);
+        if (modo == NOVO) {
 
-        finish();
-    }
+            Servico servico = new Servico(descricao,
+                    Double.parseDouble(preco), Integer.parseInt(duracao));
+
+            long novoID = database.getServicoDao().insert(servico);
+
+            if (novoID <= 0) {
+                UtilsGui.avisoErro(this,
+                        getString(R.string.erro_ao_inserir_o_servico_no_banco));
+                return;
+            }
+
+            servico.setId(novoID);
+
+            intent.putExtra(ID, servico.getId());
+
+        }  else {
+
+                Servico servicoAlterado = new Servico(descricao,
+                        Double.parseDouble(preco), Integer.parseInt(duracao));
+
+                servicoAlterado.setId(servicoEditar.getId());
+
+                int qtdLinhas = database.getServicoDao().update(servicoAlterado);
+
+                if (qtdLinhas == 0) {
+                    UtilsGui.avisoErro(this,
+                            getString(R.string.erro_ao_atualizar_servico_no_banco));
+                    return;
+                }
+
+                intent.putExtra(ID, servicoAlterado.getId());
+
+            }
+
+            setResult(Activity.RESULT_OK, intent);
+
+            finish();
+
+        }  // fim salvar
 
     private void limpar() {
 
@@ -182,10 +229,6 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
             limpar();
             return true;
         }
-//        if (menuItemSelecionado == R.id.menuItemCancelar_cadastro_de_servicos) {
-//            cancelar();
-//            return true;
-//        }
         if(menuItemSelecionado == android.R.id.home){
             cancelar();
             return true;
