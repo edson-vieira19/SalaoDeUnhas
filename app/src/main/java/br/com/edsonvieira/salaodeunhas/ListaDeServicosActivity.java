@@ -53,6 +53,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             inflater.inflate(R.menu.lista_servicos_item_selecionado, menu);
             return true;
         }
+
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             return false;
@@ -103,6 +104,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                 launcherEditarServico, servicoAEditar);
 
     }
+
     private void excluirServico(final ActionMode mode) {
 
         final Servico servico = listaServicos.get(posicaoSelecionada);
@@ -113,7 +115,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
+                switch (which) {
 
                     case DialogInterface.BUTTON_POSITIVE:
 
@@ -122,7 +124,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                         int qtdAlterada = database.getServicoDao().delete(servico);
 
-                        if(qtdAlterada > 0){
+                        if (qtdAlterada > 0) {
                             listaServicos.remove(posicaoSelecionada);
                             servicoAdapter.notifyDataSetChanged();
                             mode.finish();
@@ -133,7 +135,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                         }
                         break;
 
-                    case  DialogInterface.BUTTON_NEGATIVE:
+                    case DialogInterface.BUTTON_NEGATIVE:
 
                         break;
 
@@ -141,19 +143,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
             }
         };
 
+        UtilsGui.confirmaAcao(this, mensagem, listener);
 
-
-
-
-
-
-        SalaoDeUnhasDatabase database =
-                SalaoDeUnhasDatabase.getDatabase(this);
-
-                
-
-        listaServicos.remove(posicaoSelecionada);
-        servicoAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -305,17 +296,19 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     //cadastra alguns servicos iniciais no banco
-    private void popularBanco(){
+    private void popularBanco() {
 
         SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.getDatabase(this);
 
-        String[] nomes = getResources().getStringArray(R.array.nomes_servicos);
-        int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
-        int[] preco = getResources().getIntArray(R.array.preco_servicos);
+        int numeroLinhas = database.getServicoDao().countServicos();
 
-        for (int i = 0; i < nomes.length; i++) {
+        if (numeroLinhas == 0){
+            String[] nomes = getResources().getStringArray(R.array.nomes_servicos);
+            int[] duracao = getResources().getIntArray(R.array.duracao_servicos);
+            int[] preco = getResources().getIntArray(R.array.preco_servicos);
+
+             for (int i = 0; i < nomes.length; i++) {
 
             double valorDouble = (double) preco[i];
 
@@ -323,6 +316,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
             database.getServicoDao().insert(servico);
 
+             }
         }
     }
 

@@ -28,4 +28,7 @@ public interface ServicoDao {
     @Query("SELECT * FROM servico WHERE id = :id")
     Servico queryForId(long id);
 
+    @Query("SELECT COUNT(*) FROM servico")
+    int countServicos();
+
 }
