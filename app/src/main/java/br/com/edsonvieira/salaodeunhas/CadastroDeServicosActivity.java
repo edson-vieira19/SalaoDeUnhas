@@ -185,6 +185,9 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
             }
 
+            Toast.makeText(this,getString(R.string.servico_cadastrado_com_sucesso)
+                    ,Toast.LENGTH_SHORT).show();
+
             setResult(Activity.RESULT_OK, intent);
 
             finish();

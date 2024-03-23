@@ -11,6 +11,13 @@
         android:title="@string/adicionar"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/menuItemOrdenacao_lista_de_servicos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_action_ordenacao_ascendente"
+        android:title="@string/ordenacao"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/menuItemSobre_lista_de_servicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

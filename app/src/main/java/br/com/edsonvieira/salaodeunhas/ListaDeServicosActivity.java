@@ -1,16 +1,20 @@
 package br.com.edsonvieira.salaodeunhas;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,6 +34,9 @@ import br.com.edsonvieira.salaodeunhas.utils.UtilsGui;
 
 public class ListaDeServicosActivity extends AppCompatActivity {
 
+    public static final String ARQUIVO = "br.com.edsonvieira.salaodeunhas.PREFERENCIAS";
+    public static final String ORDENACAO_ASCENDENTE = "ORDENACAO_ASCENDENTE";
+    private boolean ordenacaoAscendente = true;
     private ListView listViewServicos;
     private List<Servico> listaServicos;
     private ServicoAdapter servicoAdapter;
@@ -38,7 +45,6 @@ public class ListaDeServicosActivity extends AppCompatActivity {
     private int posicaoSelecionada = -1;
 
     public static void nova(AppCompatActivity activity) {
-
 
         Intent intent = new Intent(activity, ListaDeServicosActivity.class);
 
@@ -156,11 +162,8 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         listViewServicos = findViewById(R.id.listViewServicos);
 
-        popularBanco();
-
-        popularListViewServicos();
-
         listViewServicos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
         listViewServicos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
@@ -183,6 +186,13 @@ public class ListaDeServicosActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        popularBanco();
+
+        lerPreferenciasOrdenacao();
+
+        popularListViewServicos();
+
     }
 
     private void popularListViewServicos() {
@@ -191,9 +201,9 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
         listaServicos = database.getServicoDao().queryAllAscending();
 
-        //Collections.sort(listaServicos, Servico.comparator);
-
         servicoAdapter = new ServicoAdapter(this, listaServicos);
+
+        ordenarLista();
 
         listViewServicos.setAdapter(servicoAdapter);
     }
@@ -223,7 +233,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                     listaServicos.add(servicoInserido);
 
-                                    Collections.sort(listaServicos, Servico.comparator);
+                                    ordenarLista();
 
                                     servicoAdapter.notifyDataSetChanged();
 
@@ -256,7 +266,7 @@ public class ListaDeServicosActivity extends AppCompatActivity {
 
                                     listaServicos.set(posicaoSelecionada, servicoEditado);
 
-                                    Collections.sort(listaServicos, Servico.comparator);
+                                    ordenarLista();
 
                                     posicaoSelecionada = -1;
 
@@ -276,6 +286,16 @@ public class ListaDeServicosActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        MenuItem menuItemOrdenacao = menu.findItem(R.id.menuItemOrdenacao_lista_de_servicos);
+
+        atualizarIconeOrdenacao(menuItemOrdenacao);
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int menuItemSelecionado = item.getItemId();
@@ -283,6 +303,18 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         if (menuItemSelecionado == R.id.menuItemAdicionar_lista_de_servicos) {
 
             CadastroDeServicosActivity.novoServico(this, launcherNovoServico);
+
+            return true;
+        }
+        if(menuItemSelecionado == R.id.menuItemOrdenacao_lista_de_servicos){
+
+            salvarPreferenciasOrdenacao(!ordenacaoAscendente);
+
+            atualizarIconeOrdenacao(item);
+
+            ordenarLista();
+
+            servicoAdapter.notifyDataSetChanged();
 
             return true;
         }
@@ -296,8 +328,9 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //cadastra alguns servicos iniciais no banco
     private void popularBanco() {
+
+        //cadastra alguns servicos iniciais no banco
 
         SalaoDeUnhasDatabase database = SalaoDeUnhasDatabase.getDatabase(this);
 
@@ -320,6 +353,48 @@ public class ListaDeServicosActivity extends AppCompatActivity {
         }
     }
 
+    private void atualizarIconeOrdenacao(MenuItem menuItemOrdenacao) {
+
+        if (ordenacaoAscendente) {
+            menuItemOrdenacao.setIcon(R.drawable.ic_action_ordenacao_ascendente);
+        } else {
+            menuItemOrdenacao.setIcon(R.drawable.ic_action_ordenacao_descendente);
+        }
+    }
+
+    private void ordenarLista() {
+
+        Log.d("ordenar lista", "metodo ordenar lista foi chamado ");
+
+        if (ordenacaoAscendente) {
+            Collections.sort(listaServicos, Servico.ordenacaoCrescente);
+        } else {
+            Collections.sort(listaServicos, Servico.ordenacaoDecrescente);
+        }
+
+    }
+
+    private void lerPreferenciasOrdenacao(){
+
+        SharedPreferences shared = getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE);
+
+        ordenacaoAscendente = shared.getBoolean(ORDENACAO_ASCENDENTE, ordenacaoAscendente);
+
+    }
+
+    private void salvarPreferenciasOrdenacao(boolean novoValor){
+
+        SharedPreferences shared = getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = shared.edit();
+
+        editor.putBoolean(ORDENACAO_ASCENDENTE, novoValor );
+
+        editor.commit();
+
+        ordenacaoAscendente = novoValor;
+
+    }
 }
 
 

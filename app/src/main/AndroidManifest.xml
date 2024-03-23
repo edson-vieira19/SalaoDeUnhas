@@ -18,7 +18,6 @@
         <activity
             android:name=".ListaDeClientesActivity"
             android:exported="false">
-
         </activity>
         <activity
             android:name=".PrincipalActivity"
@@ -26,7 +25,6 @@
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
-
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->

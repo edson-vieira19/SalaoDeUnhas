@@ -102,5 +102,7 @@
     <string name="erro_ao_atualizar_servico_no_banco">Erro ao atualizar Servico no banco</string>
     <string name="deseja_realmente_excluir">"Deseja realmente excluir? "</string>
     <string name="erro_ao_tentar_apagar">Erro ao tentar apagar</string>
+    <string name="servico_cadastrado_com_sucesso">Serviço cadastrado com sucesso!</string>
+    <string name="ordenacao">Ordenação</string>
 
 </resources>

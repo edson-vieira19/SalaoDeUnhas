@@ -9,10 +9,16 @@ import java.util.Comparator;
 @Entity
 public class Servico {
 
-    public static Comparator<Servico> comparator = new Comparator<Servico>() {
+    public static Comparator<Servico> ordenacaoCrescente = new Comparator<Servico>() {
         @Override
         public int compare(Servico s1, Servico s2) {
-            return s1.getDescricao().compareTo(s2.getDescricao());
+            return s1.getDescricao().compareToIgnoreCase(s2.getDescricao());
+        }
+    };
+    public static Comparator<Servico> ordenacaoDecrescente = new Comparator<Servico>() {
+        @Override
+        public int compare(Servico s1, Servico s2) {
+            return -1 * s1.getDescricao().compareToIgnoreCase(s2.getDescricao());
         }
     };
 
