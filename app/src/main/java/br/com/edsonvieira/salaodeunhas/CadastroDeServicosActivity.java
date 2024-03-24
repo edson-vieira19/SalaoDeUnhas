@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.edsonvieira.salaodeunhas.model.Servico;
@@ -27,6 +28,8 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
     private EditText editTextDescricaoServico;
     private EditText editTextPrecoServico;
     private EditText editTextDuracaoServico;
+
+    private TextView textViewCadastrarEditarServico;
     private Servico servicoEditar;
 
     public static void novoServico(AppCompatActivity activity,
@@ -61,6 +64,7 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
         editTextDescricaoServico = findViewById(R.id.editTextDescricaoServico);
         editTextPrecoServico = findViewById(R.id.editTextPrecoServico);
         editTextDuracaoServico = findViewById(R.id.editTextDuracaoServico);
+        textViewCadastrarEditarServico = findViewById(R.id.textViewCadastrarRegistrarServico);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -77,11 +81,13 @@ public class CadastroDeServicosActivity extends AppCompatActivity {
 
             if (modo == NOVO) {
 
-                setTitle("Novo Serviço");
+                setTitle(getString(R.string.novo_servico));
+                textViewCadastrarEditarServico.setText(R.string.cadastro_de_servicos);
 
             } else if (modo == EDITAR) {
 
-                setTitle("Editar Serviço");
+                setTitle(getString(R.string.editarservico));
+                textViewCadastrarEditarServico.setText(R.string.editar_um_servico);
 
                 long idServico = bundle.getLong(ID);
 

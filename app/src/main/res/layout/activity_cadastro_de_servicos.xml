@@ -15,7 +15,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/descricao"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCadastrarRegistrarServico" />
 
     <EditText
         android:id="@+id/editTextDescricaoServico"
@@ -27,7 +27,7 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textViewDescricaoServico"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCadastrarRegistrarServico" />
 
     <TextView
         android:id="@+id/textView3"
@@ -76,13 +76,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextPrecoServico" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewCadastrarRegistrarServico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/cadastrar_editar_servico"
+        android:text="@string/editar_um_servico"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
